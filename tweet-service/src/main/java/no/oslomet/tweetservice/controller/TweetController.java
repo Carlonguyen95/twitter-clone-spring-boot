@@ -15,27 +15,27 @@ public class TweetController {
     @Autowired
     TweetService tweetService;
 
-    @GetMapping("/tweets")
+    @GetMapping("/tweet")
     public List<Tweet> getAllTweets() { return tweetService.getAllTweets(); }
 
-    @GetMapping("/tweets/{id}")
+    @GetMapping("/tweet/{id}")
     @ResponseBody
     public ResponseEntity<Tweet> getTweet(@PathVariable String id) {
         return new ResponseEntity<>(tweetService.getTweetById(Long.parseLong(id)), HttpStatus.OK);
     }
 
-    @DeleteMapping("/tweets/{id}")
+    @DeleteMapping("/tweet/{id}")
     public void deleteTweet(@PathVariable long id) {
         tweetService.deleteTweetById(id);
     }
 
-    @PostMapping("/tweets")
+    @PostMapping("/tweet")
     @ResponseBody
     public ResponseEntity<Tweet> saveTweet(@RequestBody Tweet newTweet) {
         return new ResponseEntity<>(tweetService.saveTweet(newTweet), HttpStatus.OK);
     }
 
-    @PutMapping("/tweets/{id}")
+    @PutMapping("/tweet/{id}")
     public Tweet updateTweet(@PathVariable long id,  @RequestBody  Tweet newTweet) {
         newTweet.setId(id);
         return tweetService.saveTweet(newTweet);

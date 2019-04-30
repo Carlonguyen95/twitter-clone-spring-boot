@@ -2,8 +2,10 @@ package no.oslomet.clientservice.controller;
 
 
 import no.oslomet.clientservice.model.Ticket;
+import no.oslomet.clientservice.model.Tweet;
 import no.oslomet.clientservice.model.User;
 import no.oslomet.clientservice.service.TicketService;
+import no.oslomet.clientservice.service.TweetService;
 import no.oslomet.clientservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,9 +22,11 @@ public class HomeController {
     @Autowired
     TicketService ticketService;
     @Autowired
+    TweetService tweetService;
+    @Autowired
     UserService userService;
 
-    private List<Ticket> ticketList = new ArrayList<>();
+    private List<Tweet> tweetList = new ArrayList<>();
 
 
     @GetMapping({"/", "/login"})
@@ -35,19 +39,19 @@ public class HomeController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByEmail(auth.getName());
-//        List<Ticket> filteredList = new ArrayList<>();
-//
-//        ticketList.clear();
-//        ticketList = ticketService.getAllTickets();
-//
-//        for(Ticket t : ticketList){
-//            if(t.getUser() == null){
-//                filteredList.add(t);
-//            }
-//        }
+        List<Tweet> filteredList = new ArrayList<>();
+
+        tweetList.clear();
+        tweetList = tweetService.getAllTweets();
+
+        for(Tweet t : tweetList){
+            if(t.getIdParent() == user.getId()){
+                filteredList.add(t);
+            }
+        }
 
         model.addAttribute("user", user);
-//        model.addAttribute("ticketList", filteredList);
+        model.addAttribute("tweetList", filteredList);
 
         return "index";
     }
@@ -60,13 +64,13 @@ public class HomeController {
 
         model.addAttribute("user", user);
 
-        ticketList.clear();
-        ticketList = ticketService.getAllTickets();
-        model.addAttribute("ticketList", ticketList);
-
-        if(user.getRole().equals("USER")){
-            return "redirect:/home";
-        }
+//        ticketList.clear();
+//        ticketList = ticketService.getAllTickets();
+//        model.addAttribute("ticketList", ticketList);
+//
+//        if(user.getRole().equals("USER")){
+//            return "redirect:/home";
+//        }
 
         return "indexAdmin";
     }
@@ -92,5 +96,10 @@ public class HomeController {
 
         model.addAttribute("myTicketList", filteredList);
         return "myTickets";
+    }
+
+    @GetMapping("/tweets")
+    public String tweets(){
+        return "/home";
     }
 }
