@@ -37,29 +37,29 @@
         </div>
     </nav>
 
-    <div id="container">
-        <div id="ticketTable">
-            <table class="table">
-                <tr>
-                    <th>Cinema</th>
-                    <th>Movie</th>
-                    <th>Date</th>
-                    <th>Select</th>
-                </tr>
-                <tbody>
+    <!--<div id="container">-->
+        <!--<div id="ticketTable">-->
+            <!--<table class="table">-->
+                <!--<tr>-->
+                    <!--<th>Cinema</th>-->
+                    <!--<th>Movie</th>-->
+                    <!--<th>Date</th>-->
+                    <!--<th>Select</th>-->
+                <!--</tr>-->
+                <!--<tbody>-->
 
-                <tr th:each="ticket : ${ticketList}">
-                    <td th:text="${ticket.cinema}"></td>
-                    <td th:text="${ticket.film}"></td>
-                    <td th:text="${ticket.date}"></td>
-                    <td>
-                        <a class="btn btn-warning" th:href="@{/buy/}+${ticket.id}">Buy ticket</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                <!--<tr th:each="ticket : ${ticketList}">-->
+                    <!--<td th:text="${ticket.cinema}"></td>-->
+                    <!--<td th:text="${ticket.film}"></td>-->
+                    <!--<td th:text="${ticket.date}"></td>-->
+                    <!--<td>-->
+                        <!--<a class="btn btn-warning" th:href="@{/buy/}+${ticket.id}">Buy ticket</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</div>-->
+    <!--</div>-->
 
 </body>
 </html>

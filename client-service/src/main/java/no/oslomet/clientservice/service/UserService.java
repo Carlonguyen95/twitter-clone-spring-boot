@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
-    String BASE_URL = "http://localhost:8090/user";
+    String BASE_URL = "http://localhost:8081/user";
     private RestTemplate restTemplate = new RestTemplate();
 
     @Override

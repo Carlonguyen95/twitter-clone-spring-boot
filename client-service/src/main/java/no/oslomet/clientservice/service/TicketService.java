@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class TicketService {
-    String BASE_URL = "http://localhost:8090/tickets";
+    String BASE_URL = "http://localhost:8082/tickets";
     private RestTemplate restTemplate = new RestTemplate();
 
     public List<Ticket> getAllTickets(){

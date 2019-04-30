@@ -35,19 +35,19 @@ public class HomeController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByEmail(auth.getName());
-        List<Ticket> filteredList = new ArrayList<>();
-
-        ticketList.clear();
-        ticketList = ticketService.getAllTickets();
-
-        for(Ticket t : ticketList){
-            if(t.getUser() == null){
-                filteredList.add(t);
-            }
-        }
+//        List<Ticket> filteredList = new ArrayList<>();
+//
+//        ticketList.clear();
+//        ticketList = ticketService.getAllTickets();
+//
+//        for(Ticket t : ticketList){
+//            if(t.getUser() == null){
+//                filteredList.add(t);
+//            }
+//        }
 
         model.addAttribute("user", user);
-        model.addAttribute("ticketList", filteredList);
+//        model.addAttribute("ticketList", filteredList);
 
         return "index";
     }
