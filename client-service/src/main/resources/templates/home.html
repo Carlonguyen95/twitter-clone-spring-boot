@@ -5,6 +5,9 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
             integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
             crossorigin="anonymous"></script>
+    <base href="/">
+    <link rel="stylesheet" type="text/css" href="/css/twitter.css" th:href="@{/css/twitter.css}"/>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -13,7 +16,6 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="../static/css/Layout.css" th:href="@{/css/twitterLayout.css}">
 
     <title>Twitter</title>
 </head>
@@ -48,7 +50,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <div class="panel panel-default">
+            <div class="panel panel-default" th:if="${#request.isUserInRole('ROLE_USER')}">
                 <div class="panel-body">
                     <a href="#"><img class="img-responsive" alt="" src="http://placehold.it/800x500"></a>
                     <div class="row">
@@ -94,9 +96,10 @@
                 </div>
             </div>
         </div>
+
         <div class="col-sm-6">
             <div class="panel panel-info">
-                <div class="panel-heading">
+                <div class="panel-heading" th:if="${#request.isUserInRole('ROLE_USER')}">
                     <div class="media">
                         <a class="media-left" href="#fake">
                             <img alt="" class="media-object img-rounded" src="http://placehold.it/35x35">
@@ -111,6 +114,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="panel-body">
                     <div class="media">
                         <a class="media-left" href="#fake">
@@ -127,154 +131,54 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div class="media">
-                        <a class="media-left" href="#fake">
-                            <img alt="" class="media-object img-rounded" src="http://placehold.it/64x64">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Dolorem aspernatur rerum, iure? Culpa iste aperiam sequi, fuga, quasi rerum, eum, quo natus tenetur officia placeat.</p>
-                            <ul class="nav nav-pills nav-pills-custom">
-                                <li><a href="#"><span class="glyphicon glyphicon-share-alt"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-retweet"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-option-horizontal"></span></a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="media">
-                        <a class="media-left" href="#fake">
-                            <img alt="" class="media-object img-rounded" src="http://placehold.it/64x64">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Dolorem aspernatur rerum, iure? Culpa iste aperiam sequi, fuga, quasi rerum, eum, quo natus tenetur officia placeat.</p>
-                            <ul class="nav nav-pills nav-pills-custom">
-                                <li><a href="#"><span class="glyphicon glyphicon-share-alt"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-retweet"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-option-horizontal"></span></a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="media">
-                        <a class="media-left" href="#fake">
-                            <img alt="" class="media-object img-rounded" src="http://placehold.it/64x64">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Dolorem aspernatur rerum, iure? Culpa iste aperiam sequi, fuga, quasi rerum, eum, quo natus tenetur officia placeat.</p>
-                            <ul class="nav nav-pills nav-pills-custom">
-                                <li><a href="#"><span class="glyphicon glyphicon-share-alt"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-retweet"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-option-horizontal"></span></a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="media">
-                        <a class="media-left" href="#fake">
-                            <img alt="" class="media-object img-rounded" src="http://placehold.it/64x64">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Dolorem aspernatur rerum, iure? Culpa iste aperiam sequi, fuga, quasi rerum, eum, quo natus tenetur officia placeat.</p>
-                            <ul class="nav nav-pills nav-pills-custom">
-                                <li><a href="#"><span class="glyphicon glyphicon-share-alt"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-retweet"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-option-horizontal"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
-            <br>
-            <br>
-            <br>
+                <tr th:each="tweet : ${tweetList}">
+                    <td>
+                        <div class="tweetEntry">
 
+                            <div class="tweetEntry-content">
 
-            <div class="panel panel-default">
-                <div class="panel-heading">Prova</div>
-                <div class="panel-body">
-                    <ul class="nav nav-pills">
-                        <li role="presentation" class="active"><a href="#">Home</a></li>
-                        <li role="presentation"><a href="#">Profile</a></li>
-                        <li role="presentation"><a href="#">Messages</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+                                <a class="tweetEntry-account-group" href="[accountURL]">
 
-        <div class="col-sm-3">
-            <div class="panel panel-default panel-custom">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        Who to follow
-                        <small><a href="#">Refresh</a> ● <a href="#">View all</a></small>
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="http://placehold.it/32x32" alt="" class="media-object img-rounded">
+                                    <img class="tweetEntry-avatar" src="http://placekitten.com/200/200">
+
+                                    <strong class="tweetEntry-fullname">
+                                        [fullname]
+                                    </strong>
+
+                                    <span class="tweetEntry-username">
+        @<b>[username]</b>
+      </span>
+
+                                    <span class="tweetEntry-timestamp">- [timestamp]</span>
+
+                                </a>
+
+                                <div class="tweetEntry-text-container">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quam ipsum, finibus ac est sed, vestibulum condimentum neque. Sed eget iaculis.
+                                </div>
+
+                            </div>
+
+                            <div class="optionalMedia">
+                                <img class="optionalMedia-img" src="http://placekitten.com/500/400">
+                            </div>
+
+                            <div class="tweetEntry-action-list" style="line-height:24px;color: #b1bbc3;">
+                                <i class="fa fa-reply" style="width: 80px;"></i>
+                                <i class="fa fa-retweet" style="width: 80px"></i>
+                                <i class="fa fa-heart" style="width: 80px"></i>
+                            </div>
+
                         </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Nome e cognome</h4>
-                            <a href="#" class="btn btn-default btn-xs">
-                                +
-                                <span class="glyphicon glyphicon-user"></span>
-                                Follow
-                            </a>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="http://placehold.it/32x32" alt="" class="media-object img-rounded">
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Nome e cognome</h4>
-                            <a href="#" class="btn btn-default btn-xs">
-                                +
-                                <span class="glyphicon glyphicon-user"></span>
-                                Follow
-                            </a>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <img src="http://placehold.it/32x32" alt="" class="media-object img-rounded">
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Nome e cognome</h4>
-                            <a href="#" class="btn btn-default btn-xs">
-                                +
-                                <span class="glyphicon glyphicon-user"></span>
-                                Follow
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <a href="www.google.it">
-                        <span class="glyphicon glyphicon-user"></span>
-                        Find people you know
-                    </a>
-                </div>
-            </div>
-            <div class="well well-sm">
-                <ul class="list-inline">
-                    <li>© 2019 Carlos Twitter</li>
-                </ul>
+                    </td>
+                </tr>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 
 

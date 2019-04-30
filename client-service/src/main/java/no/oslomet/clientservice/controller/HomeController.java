@@ -29,9 +29,17 @@ public class HomeController {
     private List<Tweet> tweetList = new ArrayList<>();
 
 
-    @GetMapping({"/", "/login"})
-    public String home(){
-        return "login";
+    @GetMapping("/")
+    public String home(Model model){
+        tweetList = tweetService.getAllTweets();
+
+        model.addAttribute("tweetList", tweetList);
+        return "/home";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "/login";
     }
 
     @GetMapping("/home")
@@ -98,8 +106,4 @@ public class HomeController {
         return "myTickets";
     }
 
-    @GetMapping("/tweets")
-    public String tweets(){
-        return "/home";
-    }
 }
