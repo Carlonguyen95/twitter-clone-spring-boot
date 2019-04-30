@@ -15,7 +15,6 @@ public class Tweet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="tweet_id")
     private long id;
-    @Nullable
     private long idParent;
     private long idUser;
     private String urlImage;
