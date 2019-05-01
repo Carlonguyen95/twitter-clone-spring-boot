@@ -10,7 +10,7 @@
     </parent>
     <groupId>no.oslomet</groupId>
     <artifactId>assignment4_client</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>war</packaging>
     <name>assignment4_client</name>
     <description>Demo project for Spring Boot</description>
@@ -52,6 +52,10 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
             <version>5.1.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
     </dependencies>
 
