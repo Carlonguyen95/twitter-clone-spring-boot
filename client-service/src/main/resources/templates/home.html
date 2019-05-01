@@ -142,6 +142,7 @@
 
                 <tr th:each="tweet : ${tweetList}">
                     <td>
+                        <a href="#exampleModal" data-toggle="modal">
                         <div class="tweetEntry">
 
                             <div class="tweetEntry-content">
@@ -158,13 +159,11 @@
                                         @<b>[username]</b>
                                     </span>
 
-                                    <span class="tweetEntry-timestamp">- [timestamp]</span>
+                                    <span class="tweetEntry-timestamp" th:text="${tweet.timestamp}">- [timestamp]</span>
 
                                 </a>
 
-                                <div class="tweetEntry-text-container">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quam ipsum, finibus ac
-                                    est sed, vestibulum condimentum neque. Sed eget iaculis.
+                                <div class="tweetEntry-text-container" th:text="${tweet.text}">
                                 </div>
 
                             </div>
@@ -174,12 +173,15 @@
                             </div>
 
                             <div class="tweetEntry-action-list" style="line-height:24px;color: #b1bbc3;">
-                                <i class="fa fa-reply" style="width: 80px;"></i>
-                                <i class="fa fa-retweet" style="width: 80px"></i>
-                                <i class="fa fa-heart" style="width: 80px"></i>
+                                <ul class="nav nav-pills nav-pills-custom">
+                                    <li><a href="#"><span class="glyphicon glyphicon-share-alt"></span></a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-retweet"></span></a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-heart"></span></a></li>
+                                </ul>
                             </div>
 
                         </div>
+                        </a>
                     </td>
                 </tr>
 
@@ -189,6 +191,29 @@
 </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Reply to [username of tweet]</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Reply</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
