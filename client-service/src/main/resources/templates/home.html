@@ -58,7 +58,8 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
-            <div class="panel panel-default" th:if="${#request.isUserInRole('ROLE_USER')}">
+            <!--<div class="panel panel-default" th:if="${#request.isUserInRole('ROLE_USER')}">-->
+            <div class="panel panel-default" sec:authorize="isAuthenticated()">
                 <div class="panel-body">
                     <a href="#"><img class="img-responsive" alt="" src="http://placehold.it/800x500"></a>
                     <div class="row">
@@ -107,7 +108,8 @@
 
         <div class="col-sm-6">
             <div class="panel panel-info">
-                <div class="panel-heading" th:if="${#request.isUserInRole('ROLE_USER')}">
+                <!--<div class="panel-heading" th:if="${#request.isUserInRole('ROLE_USER')}">-->
+                <div class="panel-heading" sec:authorize="isAuthenticated()">
                     <div class="media">
                         <a class="media-left" href="#fake">
                             <img alt="" class="media-object img-rounded" src="http://placehold.it/35x35">
