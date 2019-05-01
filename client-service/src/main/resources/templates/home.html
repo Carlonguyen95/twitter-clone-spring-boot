@@ -47,7 +47,7 @@
                 <a sec:authorize="isAnonymous()" class="btn btn-success" type="submit" aria-label="Left Align" data-toggle="modal" data-target="#loginModal">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"> </span> Login
                 </a>
-                <a sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" aria-label="Left Align" th:onclick="@{/logout}">
+                <a sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" aria-label="Left Align" th:href="@{/logout}">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"> </span> Logout
                 </a>
             </div>
