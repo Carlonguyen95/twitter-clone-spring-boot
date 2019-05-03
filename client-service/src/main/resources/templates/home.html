@@ -44,13 +44,16 @@
                     <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
                 </div>
 
-                <button sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" aria-label="Left Align">
+                <a sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" aria-label="Left Align"
+                   data-toggle="modal" data-target="#submitTweetModal">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span> Tweet
-                </button>
-                <a sec:authorize="isAnonymous()" class="btn btn-success" type="submit" aria-label="Left Align" data-toggle="modal" data-target="#loginModal">
+                </a>
+                <a sec:authorize="isAnonymous()" class="btn btn-success" type="submit" aria-label="Left Align"
+                   data-toggle="modal" data-target="#loginModal">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"> </span> Login
                 </a>
-                <a sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" aria-label="Left Align" th:href="@{/logout}">
+                <a sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" aria-label="Left Align"
+                   th:href="@{/logout}">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"> </span> Logout
                 </a>
             </div>
@@ -111,34 +114,36 @@
 
         <div class="col-sm-6">
             <div class="tweetEntry-tweetHolder">
-                
+
                 <!-- TWEET DIV -->
                 <tr th:each="tweet : ${tweetList}">
                     <td>
                         <a href="#replyTweetModal" data-toggle="modal">
-                        <div class="tweetEntry">
-                            <div class="tweetEntry-content">
-                                <a class="tweetEntry-account-group" href="[accountURL]">
-                                    <img class="tweetEntry-avatar" src="http://placekitten.com/200/200">
-                                    <strong class="tweetEntry-fullname">[fullname]</strong>
-                                    <span class="tweetEntry-username">@<b>[username]</b></span>
-                                    <span class="tweetEntry-timestamp" th:text="${tweet.timestamp}">- [timestamp]</span>
-                                </a>
-                                <div class="tweetEntry-text-container" th:text="${tweet.text}"></div>
-                            </div>
+                            <div class="tweetEntry">
+                                <div class="tweetEntry-content">
+                                    <a class="tweetEntry-account-group" href="[accountURL]">
+                                        <img class="tweetEntry-avatar" src="http://placekitten.com/200/200">
+                                        <strong class="tweetEntry-fullname">[fullname]</strong>
+                                        <span class="tweetEntry-username">@<b>[username]</b></span>
+                                        <span class="tweetEntry-timestamp"
+                                              th:text="${tweet.timestamp}">- [timestamp]</span>
+                                    </a>
+                                    <div class="tweetEntry-text-container" th:text="${tweet.text}"></div>
+                                </div>
 
-                            <div class="optionalMedia">
-                                <img class="optionalMedia-img" src="http://placekitten.com/500/400">
-                            </div>
+                                <div class="optionalMedia">
+                                    <img class="optionalMedia-img" src="http://placekitten.com/500/400">
+                                </div>
 
-                            <div class="tweetEntry-action-list" style="line-height:24px;color: #b1bbc3;">
-                                <ul class="nav nav-pills nav-pills-custom">
-                                    <li><a href="#" data-toggle="modal" data-target="#replyTweetModal"><span class="glyphicon glyphicon-share-alt"></span></a></li>
-                                    <li><a href="#"><span class="glyphicon glyphicon-retweet"></span></a></li>
-                                    <li><a href="#"><span class="glyphicon glyphicon-heart"></span></a></li>
-                                </ul>
+                                <div class="tweetEntry-action-list" style="line-height:24px;color: #b1bbc3;">
+                                    <ul class="nav nav-pills nav-pills-custom">
+                                        <li><a href="#" data-toggle="modal" data-target="#replyTweetModal"><span
+                                                class="glyphicon glyphicon-share-alt"></span></a></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-retweet"></span></a></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-heart"></span></a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
                         </a>
                     </td>
                 </tr>
@@ -150,11 +155,12 @@
 </div>
 
 <!-- REPLY TWEET MODAL -->
-<div class="modal fade" id="replyTweetModal" tabindex="-1" role="dialog" aria-labelledby="replyTweetModalLabel" aria-hidden="true">
+<div class="modal fade" id="replyTweetModal" tabindex="-1" role="dialog" aria-labelledby="replyTweetModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="replyTweetModalLabel">Reply to [username of tweet]</h5>
+                <h5 class="modal-title text-center" id="replyTweetModalLabel">Reply to [username of tweet]</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -186,7 +192,7 @@
                 </button>
             </div>
             <div class="modal-body mx-3">
-                <form th:action="@{/login}"  method="POST">
+                <form th:action="@{/login}" method="POST">
                     <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
                         <input type="email" id="defaultForm-email" name="username" class="form-control validate">
@@ -196,7 +202,7 @@
                         <input type="password" id="defaultForm-pass" name="password" class="form-control validate">
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn btn-success" type="submit">Login</button>
+                        <button class="btn btn-success" type="submit">Login</button>
                     </div>
                 </form>
             </div>
@@ -204,6 +210,34 @@
     </div>
 </div>
 <!-- LOGIN MODAL END-->
+
+<!-- SUBMIT A NEW TWEET MODAL -->
+<div class="modal fade" id="submitTweetModal" tabindex="-1" role="dialog" aria-labelledby="submitTweetModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="submitTweetModalLabel">Compose new Tweet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <form th:action="@{/submitTweet}" modelAttribute="tweet" method="POST">
+                    <div class="form-group">
+                        <label data-error="wrong" data-success="right" for="defaultForm-text" class="col-form-label">Message:</label>
+                        <input type="text" id="defaultForm-text" name="text" class="form-control validate"
+                               maxlength="140">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit">Tweet</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SUBMIT A NEW TWEET MODAL END -->
 
 </body>
 </html>

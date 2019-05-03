@@ -25,11 +25,18 @@ public class TweetController {
 
     @PostMapping("/submitTweet")
     public String saveTweet(@ModelAttribute("tweet") Tweet tweet){
+        System.out.println("Dette kjøres!");
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getUserByEmail(auth.getName());
+
         Timestamp currentTimeStamp = new Timestamp(System.currentTimeMillis());
         tweet.setTimestamp(currentTimeStamp);
-        System.out.println("Timestamp: " + currentTimeStamp);
+        tweet.setIdUser(user.getId());
+
         tweetService.saveTweet(tweet);
-        return "redirect:/";
+        System.out.println("Tweet queried!");
+        return "/";
     }
 
     @GetMapping("/buy/{id}")
