@@ -1,9 +1,11 @@
 package no.oslomet.clientservice.controller;
 
 
+import no.oslomet.clientservice.model.Friend;
 import no.oslomet.clientservice.model.Ticket;
 import no.oslomet.clientservice.model.Tweet;
 import no.oslomet.clientservice.model.User;
+import no.oslomet.clientservice.service.FriendService;
 import no.oslomet.clientservice.service.TicketService;
 import no.oslomet.clientservice.service.TweetService;
 import no.oslomet.clientservice.service.UserService;
@@ -27,17 +29,33 @@ public class HomeController {
     @Autowired
     TicketService ticketService;
     @Autowired
+    FriendService friendService;
+    @Autowired
     TweetService tweetService;
     @Autowired
     UserService userService;
 
     private List<Tweet> tweetList = new ArrayList<>();
-
+    private List<Friend> friendList = new ArrayList<>();
 
     @GetMapping("/")
     public String home(Model model){
-        tweetList = tweetService.getAllTweets();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getUserByEmail(auth.getName());
 
+        tweetList = tweetService.getAllTweets();
+        friendList = friendService.getAllFriends();
+        List<Friend> filteredFriendList = new ArrayList<>();
+
+        if(user != null){
+            for(Friend f : friendList){
+                if(f.getUser_id() == user.getId()){
+                    filteredFriendList.add(f);
+                }
+            }
+        }
+
+        model.addAttribute("friendList", filteredFriendList);
         model.addAttribute("tweetList", tweetList);
         return "/home";
     }
@@ -58,7 +76,6 @@ public class HomeController {
 
     @GetMapping("/home")
     public String homePage(Model model ){
-
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByEmail(auth.getName());
         List<Tweet> filteredList = new ArrayList<>();
@@ -80,7 +97,6 @@ public class HomeController {
 
     @GetMapping("/indexAdmin")
     public String indexAdmin(Model model){
-
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByEmail(auth.getName());
 
@@ -99,7 +115,6 @@ public class HomeController {
 
     @GetMapping("/myTickets")
     public String myTickets(Model model){
-
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.getUserByEmail(auth.getName());
 

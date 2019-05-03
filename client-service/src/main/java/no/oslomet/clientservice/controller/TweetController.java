@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.Timestamp;
+
 @Controller
 public class TweetController {
     @Autowired
@@ -21,10 +23,13 @@ public class TweetController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/saveTweet")
+    @PostMapping("/submitTweet")
     public String saveTweet(@ModelAttribute("tweet") Tweet tweet){
+        Timestamp currentTimeStamp = new Timestamp(System.currentTimeMillis());
+        tweet.setTimestamp(currentTimeStamp);
+        System.out.println("Timestamp: " + currentTimeStamp);
         tweetService.saveTweet(tweet);
-        return "redirect:/indexAdmin";
+        return "redirect:/";
     }
 
     @GetMapping("/buy/{id}")
