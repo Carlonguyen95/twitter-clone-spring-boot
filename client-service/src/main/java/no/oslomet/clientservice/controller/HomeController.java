@@ -46,16 +46,15 @@ public class HomeController {
         tweetList = tweetService.getAllTweets();
         friendList = friendService.getAllFriends();
         List<Friend> filteredFriendList = new ArrayList<>();
+        List<Friend> filteredFollowerList = new ArrayList<>();
 
         if(user != null){
-            for(Friend f : friendList){
-                if(f.getUser_id() == user.getId()){
-                    filteredFriendList.add(f);
-                }
-            }
+            filteredFriendList = friendService.getMyFriends(friendList, user);
+            filteredFollowerList = friendService.getMyFollowers(friendList, user);
         }
 
         model.addAttribute("friendList", filteredFriendList);
+        model.addAttribute("followerList", filteredFollowerList);
         model.addAttribute("tweetList", tweetList);
         return "/home";
     }

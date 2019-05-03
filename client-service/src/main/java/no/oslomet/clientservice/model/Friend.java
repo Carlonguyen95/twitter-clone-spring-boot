@@ -7,4 +7,6 @@ public class Friend {
     private long id;
     private long user_id;
     private long user_id_following;
+
+
 }
