@@ -5,6 +5,7 @@ import no.oslomet.clientservice.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,5 +36,17 @@ public class TweetService {
 
     public void deleteTweetById(long id){
         restTemplate.delete(BASE_URL + "/" + id);
+    }
+
+    public List<Tweet> getMyTweets(List<Tweet> list, User user){
+        List<Tweet> filteredTweetList = new ArrayList<>();
+
+        for(Tweet t : list){
+            if(t.getIdUser() == user.getId()){
+                filteredTweetList.add(t);
+            }
+        }
+
+        return filteredTweetList;
     }
 }

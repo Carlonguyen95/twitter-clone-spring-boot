@@ -20,6 +20,7 @@ public class FriendService {
                 restTemplate.getForObject(BASE_URL, Friend[].class)
         ).collect(Collectors.toList());
     }
+
     @SuppressWarnings("Duplicates")
     public List<Friend> getMyFriends(List<Friend> list, User user){
         List<Friend> filteredFriendList = new ArrayList<>();
