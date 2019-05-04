@@ -216,23 +216,23 @@
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="submitTweetModalLabel">Compose new Tweet</h5>
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Compose new Tweet</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body mx-3">
                 <form th:action="@{/submitTweet}" modelAttribute="tweet" method="POST">
-                    <div class="form-group">
+                    <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="defaultForm-text" class="col-form-label">Message:</label>
                         <input type="text" id="defaultForm-text" name="text" class="form-control validate"
                                maxlength="140">
                     </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Tweet</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="submit">Tweet</button>
             </div>
         </div>
     </div>
