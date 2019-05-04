@@ -203,13 +203,14 @@
                     </div>
                     <div class="md-form mb-4 text-center mt-2">
                         <br>
-                        <button class="btn btn-success" type="submit">Login</button>
+                        <button class="btn btn-success" type="submit">LOGIN</button>
                     </div>
                     <br>
 
                     <div class="modal-footer">
                         <div class="options text-center text-md-right mt-1">
-                            <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
+                            <p>Not a member? <a href="#" class="blue-text" data-toggle="modal" data-target="#signUpModal"
+                                                data-dismiss="modal">Sign Up</a></p>
                         </div>
                     </div>
                 </form>
@@ -218,6 +219,49 @@
     </div>
 </div>
 <!-- LOGIN MODAL END-->
+
+<!-- SIGN UP MODAL -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mb-1">
+                <form th:action="@{/register}" modelAttribute="user" method="POST">
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="screenname">Username</label>
+                        <input type="text" id="screenname" name="screenName" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="firstname">First name</label>
+                        <input type="text" id="firstname" name="firstName" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="lastname">Last name</label>
+                        <input type="text" id="lastname" name="lastName" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control validate">
+                    </div>
+                    <div class="md-form mb-4 text-center mt-2">
+                        <br>
+                        <button class="btn btn-warning" type="submit">SIGN UP</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SIGN UP MODAL END -->
 
 <!-- SUBMIT A NEW TWEET MODAL -->
 <div class="modal fade" id="submitTweetModal" tabindex="-1" role="dialog" aria-labelledby="submitTweetModalLabel"
