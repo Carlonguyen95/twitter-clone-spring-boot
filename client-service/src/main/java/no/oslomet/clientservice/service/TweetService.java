@@ -1,5 +1,6 @@
 package no.oslomet.clientservice.service;
 
+import no.oslomet.clientservice.model.Friend;
 import no.oslomet.clientservice.model.Tweet;
 import no.oslomet.clientservice.model.User;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,21 @@ public class TweetService {
         for(Tweet t : list){
             if(t.getIdUser() == user.getId()){
                 filteredTweetList.add(t);
+            }
+        }
+
+        return filteredTweetList;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public List<Tweet> getMyFriendsTweets(List<Friend> friendList, List<Tweet> tweetList){
+        List<Tweet> filteredTweetList = new ArrayList<>();
+
+        for(Tweet t : tweetList){
+            for(Friend f : friendList){
+                if(t.getIdUser() == f.getUser_id_following()){
+                    filteredTweetList.add(t);
+                }
             }
         }
 

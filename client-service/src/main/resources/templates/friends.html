@@ -31,10 +31,10 @@
     <div class="container">
         <div class="navbar-collapse navbar-collapse-1 collapse" aria-expanded="true">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a th:href="@{/}"><span class="glyphicon glyphicon-home"></span> Home</a>
                 </li>
-                <li>
+                <li class="active">
                     <a th:href="@{/friendsTweets}" sec:authorize="isAuthenticated()">Friend's Tweets</a>
                 </li>
             </ul>

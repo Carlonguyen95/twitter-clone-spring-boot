@@ -39,7 +39,7 @@ public class FriendService {
         List<Friend> filteredFollowerList = new ArrayList<>();
 
         for(Friend f : list){
-            if(f.getUser_id() == user.getId()){
+            if(f.getUser_id_following() == user.getId()){
                 filteredFollowerList.add(f);
             }
         }

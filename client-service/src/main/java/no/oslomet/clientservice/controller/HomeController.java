@@ -34,6 +34,7 @@ public class HomeController {
     private List<Tweet> tweetList = new ArrayList<>();
     private List<Friend> friendList = new ArrayList<>();
 
+    @SuppressWarnings("Duplicates")
     @GetMapping("/")
     public String home(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -41,6 +42,7 @@ public class HomeController {
 
         tweetList = tweetService.getAllTweets();
         friendList = friendService.getAllFriends();
+
         List<Friend> filteredFriendList = new ArrayList<>();
         List<Friend> filteredFollowerList = new ArrayList<>();
         List<Tweet> filteredTweetList = new ArrayList<>();
@@ -72,26 +74,33 @@ public class HomeController {
         return "redirect:/";
     }
 
-//    @GetMapping("/home")
-//    public String homePage(Model model ){
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        User user = userService.getUserByEmail(auth.getName());
-//        List<Tweet> filteredList = new ArrayList<>();
-//
-//        tweetList.clear();
-//        tweetList = tweetService.getAllTweets();
-//
-//        for(Tweet t : tweetList){
-//            if(t.getIdParent() == user.getId()){
-//                filteredList.add(t);
-//            }
-//        }
-//
-//        model.addAttribute("user", user);
-//        model.addAttribute("tweetList", filteredList);
-//
-//        return "index";
-//    }
+    @SuppressWarnings("Duplicates")
+    @GetMapping("/friendsTweets")
+    public String loadFriendsTweets(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.getUserByEmail(auth.getName());
+
+        tweetList = tweetService.getAllTweets();
+        friendList = friendService.getAllFriends();
+
+        List<Friend> filteredFriendList = new ArrayList<>();
+        List<Friend> filteredFollowerList = new ArrayList<>();
+        List<Tweet> filteredTweetList = new ArrayList<>();
+        List<Tweet> filteredMyFriendsTweetsList = new ArrayList<>();
+
+        if(user != null){
+            filteredFriendList = friendService.getMyFriends(friendList, user);
+            filteredFollowerList = friendService.getMyFollowers(friendList, user);
+            filteredTweetList = tweetService.getMyTweets(tweetList, user);
+            filteredMyFriendsTweetsList = tweetService.getMyFriendsTweets(filteredFriendList, tweetList);
+        }
+
+        model.addAttribute("friendList", filteredFriendList);
+        model.addAttribute("followerList", filteredFollowerList);
+        model.addAttribute("tweetCountList", filteredTweetList);
+        model.addAttribute("tweetList", filteredMyFriendsTweetsList);
+        return "/friends";
+    }
 
 //    @GetMapping("/indexAdmin")
 //    public String indexAdmin(Model model){
