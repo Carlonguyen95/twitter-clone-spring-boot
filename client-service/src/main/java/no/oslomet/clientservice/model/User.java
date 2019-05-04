@@ -2,9 +2,6 @@ package no.oslomet.clientservice.model;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Data
 public class User {
     private long id;
@@ -24,5 +21,4 @@ public class User {
         this.email = email;
         this.password = password;
     }
-    private List<Ticket> tickets = new ArrayList<>();
 }

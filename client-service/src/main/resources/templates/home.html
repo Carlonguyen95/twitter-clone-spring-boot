@@ -191,7 +191,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body mx-3">
+            <div class="modal-body mb-1">
                 <form th:action="@{/login}" method="POST">
                     <div class="md-form mb-4">
                         <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
@@ -201,8 +201,16 @@
                         <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
                         <input type="password" id="defaultForm-pass" name="password" class="form-control validate">
                     </div>
-                    <div class="modal-footer d-flex justify-content-center">
+                    <div class="md-form mb-4 text-center mt-2">
+                        <br>
                         <button class="btn btn-success" type="submit">Login</button>
+                    </div>
+                    <br>
+
+                    <div class="modal-footer">
+                        <div class="options text-center text-md-right mt-1">
+                            <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -230,7 +238,9 @@
                                maxlength="140">
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit">Tweet</button>
+                        <div class="md-form mb-4 text-center mt-2">
+                            <button class="btn btn-primary" type="submit">Tweet</button>
+                        </div>
                     </div>
                 </form>
             </div>
