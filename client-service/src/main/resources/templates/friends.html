@@ -35,7 +35,10 @@
                     <a th:href="@{/}"><span class="glyphicon glyphicon-home"></span> Home</a>
                 </li>
                 <li class="active">
-                    <a th:href="@{/friendsTweets}" sec:authorize="isAuthenticated()">Friend's Tweets</a>
+                    <a th:href="@{/friendstweets}" sec:authorize="isAuthenticated()">Friend's Tweets</a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/user}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Manage Users</a>
                 </li>
             </ul>
             <div class="navbar-form navbar-right">

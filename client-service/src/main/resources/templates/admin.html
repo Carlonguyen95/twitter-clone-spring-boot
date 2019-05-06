@@ -37,7 +37,7 @@
                     <a th:href="@{/friendstweets}" sec:authorize="isAuthenticated()">Friend's Tweets</a>
                 </li>
                 <li class="active">
-                    <a th:href="@{/admin/admin}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Manage Users</a>
+                    <a th:href="@{/admin/user}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Manage Users</a>
                 </li>
             </ul>
             <div class="navbar-form navbar-right">

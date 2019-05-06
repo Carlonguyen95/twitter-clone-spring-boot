@@ -26,18 +26,16 @@
 </head>
 <body>
 
+
 <div class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-collapse navbar-collapse-1 collapse" aria-expanded="true">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a th:href="@{/}"><span class="glyphicon glyphicon-home"></span> Home</a>
                 </li>
                 <li>
                     <a th:href="@{/friendstweets}" sec:authorize="isAuthenticated()">Friend's Tweets</a>
-                </li>
-                <li>
-                    <a th:href="@{/admin/user}" th:if="${#request.isUserInRole('ROLE_ADMIN')}">Manage Users</a>
                 </li>
             </ul>
             <div class="navbar-form navbar-right">
@@ -80,7 +78,7 @@
                         <div class="col-xs-4">
                             <h5>
                                 <small>FOLLOWING</small>
-                                <a href="#" th:text="${friendList.size()}"></a>
+                                <a th:href="@{/friendlist}" th:text="${friendList.size()}"></a>
                             </h5>
                         </div>
                         <div class="col-xs-4">

@@ -7,7 +7,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -36,6 +39,20 @@ public class UserService implements UserDetailsService {
 
     public User registerUser(User user){
         return restTemplate.postForObject(BASE_URL, user, User.class);
+    }
+
+    public List<User> getAllUsers(){
+        return Arrays.stream(
+                restTemplate.getForObject(BASE_URL, User[].class)
+        ).collect(Collectors.toList());
+    }
+
+    public void deleteUserById(long id){
+        restTemplate.delete(BASE_URL + "/" + id);
+    }
+
+    public void updateUserPasswordById(long id, User user){
+        restTemplate.put(BASE_URL + "/" + id, user);
     }
 
 }
