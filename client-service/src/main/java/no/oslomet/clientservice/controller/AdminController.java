@@ -34,7 +34,7 @@ public class AdminController {
     public String updateUserPassword(@PathVariable("id") long id, User user){
         User newUser = user;
         newUser.setId(id);
-        userService.updateUserPasswordById(user);
+        userService.updateUserPasswordById(id, user);
         return "redirect:/admin/user";
     }
 }

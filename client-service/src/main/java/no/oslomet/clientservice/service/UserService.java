@@ -51,8 +51,8 @@ public class UserService implements UserDetailsService {
         restTemplate.delete(BASE_URL + "/" + id);
     }
 
-    public void updateUserPasswordById(User user){
-        restTemplate.postForObject(BASE_URL, user, User[].class);
+    public void updateUserPasswordById(long id, User user){
+        restTemplate.put(BASE_URL + "/" + id, user);
     }
 
 }
