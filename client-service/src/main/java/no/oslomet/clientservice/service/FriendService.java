@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class FriendService {
-    String BASE_URL = "http://localhost:8081/friend";
+    String BASE_URL = "http://134.209.152.121:8081/friend";
     private RestTemplate restTemplate = new RestTemplate();
 
     public List<Friend> getAllFriends(){

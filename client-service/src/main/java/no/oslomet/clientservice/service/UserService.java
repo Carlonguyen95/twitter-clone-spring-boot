@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
-    String BASE_URL = "http://localhost:8081/user";
+    String BASE_URL = "http://134.209.152.121:8081/user";
     private RestTemplate restTemplate = new RestTemplate();
 
     @Override

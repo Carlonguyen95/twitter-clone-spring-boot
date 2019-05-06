@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class TweetService {
-    String BASE_URL = "http://localhost:8082/tweet";
+    String BASE_URL = "http://134.209.152.121:8082/tweet";
     private RestTemplate restTemplate = new RestTemplate();
 
     public List<Tweet> getAllTweets(){
