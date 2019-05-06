@@ -7,7 +7,6 @@
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/twitter.css" th:href="@{/css/twitter.css}"/>
-    <!--<link rel="stylesheet" type="text/css" href="/css/twitterLayout.css" th:href="@{/css/twitterLayout.css}"/>-->
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -70,6 +69,8 @@
             <div class="panel panel-default" sec:authorize="isAuthenticated()">
                 <div class="panel-body">
                     <a href="#"><img class="img-responsive" alt="" src="http://placehold.it/800x500"></a>
+                    <h3 th:text="${user.screenName}"></h3>
+                    <h5 th:text="${user.bio}"></h5>
                     <div class="row">
                         <div class="col-xs-3">
                             <h5>
@@ -143,6 +144,32 @@
                                                 class="glyphicon glyphicon-share-alt"></span></a></li>
                                         <li><a href="#"><span class="glyphicon glyphicon-retweet"></span></a></li>
                                         <li><a href="#"><span class="glyphicon glyphicon-heart"></span></a></li>
+                                        <!-- REPLY TWEET MODAL -->
+                                        <div class="modal fade" id="replyTweetModal" tabindex="-1" role="dialog" aria-labelledby="replyTweetModalLabel"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title text-center" id="replyTweetModalLabel">Reply to [username of tweet]</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form th:action="@{/reply/}+${tweet.id}" method="POST">
+                                                            <div class="form-group">
+                                                                <label for="message-text" class="col-form-label">Message:</label>
+                                                                <textarea class="form-control" id="message-text"></textarea>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary">Reply</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- REPLY TWEET MODAL END -->
                                     </ul>
                                 </div>
                             </div>
@@ -155,33 +182,6 @@
         </div>
     </div>
 </div>
-
-<!-- REPLY TWEET MODAL -->
-<div class="modal fade" id="replyTweetModal" tabindex="-1" role="dialog" aria-labelledby="replyTweetModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="replyTweetModalLabel">Reply to [username of tweet]</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Reply</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- REPLY TWEET MODAL END -->
 
 <!-- LOGIN MODAL -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">

@@ -11,15 +11,17 @@ public class User {
     private String email;
     private String password;
     private String role;
+    private String bio;
 
     public User(){
     }
 
-    public User(String screenName, String firstName, String lastName, String email, String password) {
+    public User(String screenName, String firstName, String lastName, String email, String password, String bio) {
         this.screenName = screenName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.bio = bio;
     }
 }
