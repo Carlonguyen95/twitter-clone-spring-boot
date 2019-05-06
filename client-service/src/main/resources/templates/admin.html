@@ -22,6 +22,15 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
 
+    <!--<script type="text/javascript">-->
+        <!--$(function () {-->
+            <!--$(".updateUserPW").click(function () {-->
+                <!--var userID = $(this).data('id');-->
+                <!--$(".modal-body #userValue").val(userID);-->
+            <!--})-->
+        <!--});-->
+    <!--</script>-->
+
     <title>Twitter</title>
 </head>
 <body>
@@ -83,13 +92,41 @@
                         <a class="btn btn-warning" th:href="@{/admin/delete/}+${user.id}">Delete user</a>
                     </td>
                     <td>
-                        <a class="btn btn-warning" th:href="@{/admin/update/}+${user.id}">Update password</a>
+                        <a class="btn btn-warning" data-toggle="modal" data-target="#updateModal">Update password</a>
+                        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title">Update Password</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body mb-1">
+                                        <form th:action="@{/admin/update/}+${user.id}" modelAttribute="user" method="PUT">
+                                            <div class="md-form mb-4">
+                                                <label data-error="wrong" data-success="right" for="new-pass">New password</label>
+                                                <input type="password" id="new-pass" name="password" class="form-control validate">
+                                            </div>
+                                            <div class="md-form mb-4 text-center mt-2">
+                                                <br>
+                                                <button class="btn btn-success" type="submit">UPDATE</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
+
+<!-- UPDATE USER PASSWORD MODAL -->
+
+<!-- UPDATE USER PASSWORD MODAL END-->
 
 </body>
 </html>

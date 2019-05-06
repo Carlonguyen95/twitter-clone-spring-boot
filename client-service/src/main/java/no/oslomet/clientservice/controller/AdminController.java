@@ -30,9 +30,11 @@ public class AdminController {
         return "redirect:/admin/user";
     }
 
-//    @GetMapping("/update/{id}")
-//    public String updateUserPassword(@PathVariable("id") long id, Model model){
-//        userService.updateUserPasswordById(id, model);
-//        return "redirect:/admin";
-//    }
+    @GetMapping("/update/{id}")
+    public String updateUserPassword(@PathVariable("id") long id, User user){
+        User newUser = user;
+        newUser.setId(id);
+        userService.updateUserPasswordById(user);
+        return "redirect:/admin/user";
+    }
 }

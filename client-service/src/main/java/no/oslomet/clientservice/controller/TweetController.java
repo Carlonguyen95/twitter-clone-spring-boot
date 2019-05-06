@@ -38,12 +38,12 @@ public class TweetController {
 
     @GetMapping("/buy/{id}")
     public String updateTweet(@PathVariable("id") long id, Model model){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.getUserByEmail(auth.getName());
-        tweetService.updateTweet(id, user);
-
-        model.addAttribute("Tweet", tweetService.getTweetById(id));
-        model.addAttribute("Tweets", tweetService.getAllTweets());
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        User user = userService.getUserByEmail(auth.getName());
+//        tweetService.updateTweet(id, user);
+//
+//        model.addAttribute("Tweet", tweetService.getTweetById(id));
+//        model.addAttribute("Tweets", tweetService.getAllTweets());
         return "redirect:/home";
     }
 

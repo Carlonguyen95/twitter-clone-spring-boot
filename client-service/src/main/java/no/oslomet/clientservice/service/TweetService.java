@@ -31,8 +31,8 @@ public class TweetService {
         return restTemplate.postForObject(BASE_URL, tweet, Tweet.class);
     }
 
-    public void updateTweet(long id, User user){
-        restTemplate.put(BASE_URL + "/" + id, user);
+    public void updateTweet(long id, Tweet tweet){
+        restTemplate.put(BASE_URL + "/" + id, tweet);
     }
 
     public void deleteTweetById(long id){
