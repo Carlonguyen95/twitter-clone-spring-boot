@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>no.oslomet</groupId>
-    <artifactId>assignment4_client</artifactId>
+    <artifactId>client-service</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
-    <name>assignment4_client</name>
+    <name>client-service</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
